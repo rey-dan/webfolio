@@ -1,0 +1,939 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-color: #fff;
+    --text-color: #004861;
+    --main-color: #0e889f;
+    --highlight: #03c1ff;
+    --icon-color: #1cdfff;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    margin: auto;
+    transition: all 0.5s ease;
+}
+
+span{ 
+    display: block;
+}
+    img{
+        height: 50px;
+        width: auto;
+    }
+
+#logo{
+    border-radius: 50%;
+}
+
+nav{
+    z-index: 3;
+}
+    nav a{
+        text-decoration: none;
+    }
+    nav label h1{
+        transition: all 1s ease;
+    }
+
+main div.page h2{
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--black-color);
+    margin: 100px auto 40px;
+}
+    main div.page h2 span{
+        position: relative;
+        height: 5px;
+        background-color: var(--main-color);
+        box-shadow: var(--text-color) 10px 3px;
+    }
+
+/* Mobile */
+@media only screen and (max-width: 480px){
+    body{
+        text-align: center;
+        min-width: 320px;
+    }
+
+    /* Navigation bar */
+    nav{
+        position: sticky;
+        top: 0;
+    }
+    nav a, nav label{
+        display: block;
+        padding: 10px;
+        box-sizing: border-box;
+        transition: all 0.5s ease;
+    }
+        nav a{
+            display: none;
+            position: relative;
+            z-index: 3;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+            nav a:hover{
+                color: var(--text-color);
+                background-color: var(--icon-color);
+                font-weight: 600;
+                font-size: large;
+                padding: 7px;
+            }
+        nav label{
+            font-size: 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--text-color);
+        }
+        nav label img, nav label i{
+            vertical-align: bottom;
+            display: inline-block;
+            padding: 0;
+        }
+        nav label i{
+            font-size: 1.5rem;
+            color: var(--bg-color);
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+        nav label h1{
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--icon-color);
+            vertical-align: top;
+        }
+            nav label i#close{
+                display: none;
+            }
+        nav label #logo{
+            height: 2.5rem;
+        }
+    
+    div.page{
+        margin: 0em auto;
+        padding: 2em 2em 10em;
+        text-align: center;
+    }
+
+    /* Home */
+    div#home h2{
+        font-size: 0px;
+        display: inline;
+        margin-top: 0;
+        padding-top: 0;
+    }
+        div#home h1{
+            margin-top: 20px ;
+            font-size: 2rem;
+            font-weight: 600;
+            min-width: 320px;
+        }
+        div#home img#profile_pic{
+            margin:25px;
+            border-radius: 200px;
+            height: 250px;
+            text-align: center;
+        }
+
+        div#home div#dp_bg{
+            margin: 0px auto;
+            height: 300px;
+            width: 300px;
+            border-radius: 300px;
+            background: linear-gradient(90deg, var(--text-color), var(--main-color), var(--highlight), var(--main-color), var(--text-color));
+            background-size: 800% 100%;
+            animation: gradient 5s ease infinite;
+        }
+
+        div#home span{
+            color: var(--bg-color);
+            font-size: 2.5rem;
+            font-weight: 800;
+            width: 100%;
+            background: linear-gradient(90deg, var(--text-color), var(--main-color), var(--highlight), var(--main-color), var(--text-color));
+            background-size: 800% 100%;
+            animation: gradient 5s ease infinite;
+        }
+
+        @keyframes gradient{
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        div img#backdrop{
+            margin-top: 50px;
+            height: 250px;
+        }
+
+    /* About */
+    div#about{
+        text-align: justify;
+        background-image: linear-gradient(to bottom, #03c0ffda, #a1e7ffbd, #03c0ffa2, #00a2d8b0), url('img/background_images/DP.png');
+        background-position: bottom left;
+        background-size: 200%;
+        background-repeat: no-repeat;
+
+    }
+        div#about h2 span{
+            width: 100%;
+        }
+        div#about p{
+            font-weight: 600;
+            text-indent: 25px;
+            margin-bottom: 1rem;
+        }
+        div#about div#paragraph1{
+            padding: 20px;
+            border-radius: 10px;
+        }
+    
+    /* Technologies */
+    div#technologies{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(to bottom, #0e879f48, #0e879f48, #0e879f48, #0e879f9f);
+    }
+    div#technologies p{
+        font-size: large;
+        font-weight: 600;
+    }
+    
+    div#technologies p span{
+        margin: 2rem auto 1rem;
+        font-size: larger;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+
+    div#technologies p.sentence{
+        font-size: large;
+        font-weight: 400;
+        margin: 2rem auto;
+    }
+
+    div#technologies #container{
+        margin: 2em auto;
+        position: relative;
+        width: 14em;
+        height: 18em;
+    }
+        
+        div#technologies #card{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 1s ease;
+            box-shadow: 0 8px 20px -8px;
+            border-radius: 1em;
+        }
+        div#technologies #front, div#technologies #back{
+            padding: 0;
+            border-radius: 1em;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+        
+        div#technologies #back{
+            transform: rotateY(180deg);
+        }
+    
+    /* Projects */
+    div#projects{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--bg-color));
+    }
+    div#projects h2{
+        font-size: 4em;
+    }
+
+    div#projects h2 span{
+        width: 100%;
+    }
+
+    div#projects p{
+        font-size: 1.2em;
+        margin-bottom: 2em;
+    }
+
+    #project_list{
+        position: relative;
+        background-color: transparent;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #project_list a{
+        font-weight: 600;
+        font-size: 1.6em;
+        text-decoration: none;
+        color: white;
+    }
+    
+    .project{
+        margin: 1em;
+        width: 20em;
+        height: 30em;
+        transform-style: preserve-3d;
+        transition: all 1s ease;
+        box-shadow: 0 8px 20px -8px;
+        border-radius: 1.5em;
+    }
+        .project:hover{
+            transform: rotateY(180deg);
+        }
+    
+        .project_front, .project_back{
+            border-radius: 1.5em;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background-color: blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: justify;
+        }
+    
+        .project_front h3, .project_back a, .project_back p{
+            text-align: center;
+            padding: 1em;
+        }
+
+        .project_back p{
+            text-align: justify;
+        }
+
+        .project_back{
+            user-select: none;
+            font-size: 0.8em;
+            transform: rotateY(180deg);
+            background: linear-gradient(to bottom, rgb(10, 139, 10), rgb(174, 219, 83));
+        }
+
+        .project_back span{
+            font-size: 2em;
+            line-height: 1em;
+        }
+    
+        .project_front #demo1{
+            border: 0.25em solid white;
+            border-radius: 1em;
+            position: relative;
+            width: 80%;
+            height: auto;
+        }
+
+        #project1 .project_front{
+            background: linear-gradient(to bottom, var(--icon-color), var(--highlight), var(--main-color));
+        }
+
+        #project1 .project_front h3{
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 3em;
+            text-shadow: 2px 0px white, 0 2px white, 0 -2px white, -2px 0 white, 2px 2px white, 2px -2px white, -2px 2px white, -2px -2px white;
+        }
+
+    
+    #project_more .project_back{
+        background-image: url("projects/more_projects/coming_soon.png");
+        background-size: 150%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    #project_more .project_front{
+        background: linear-gradient(to top, #b9a976, #eeda97, #eee2bb);
+        color: white;
+        text-shadow: 3px 0px black, 0 3px black, 0 -3px black, -3px 0 black, 3px 3px black, 3px -3px black, -3px 3px black, -3px -3px black;
+    }
+
+    #project_more .project_front h3{
+        font-weight: 600;
+        font-size: 3em;
+    }
+}
+
+/* Tablet */
+@media only screen and (min-width: 481px){
+    body{
+        text-align: center;
+        min-width: 768px;
+    }
+
+    /* Navigation bar */
+    nav{
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-width: 768px;
+        background-color: var(--text-color);
+    }
+    nav a, nav label{
+        padding: 10px;
+        transition: all 1s ease;
+    }
+
+    nav a{
+        color: var(--bg-color);
+    }
+        nav a:hover{
+            color: var(--highlight);
+            font-weight: 600;
+            font-size: large;
+            padding: 7px;
+        }
+
+        nav a:active{
+            color: var(--icon-color);
+            text-shadow: white 0 0 20px;
+        }
+    
+    nav label img, nav label h1{
+        display: inline-block;
+    }
+        nav label i{
+            display: none;
+        }
+        
+        nav label h1{
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--icon-color);
+            vertical-align: top;
+            min-width: 200px;
+            max-width: 400px;
+            text-align: left;
+            padding-left: 10px;
+        }
+        
+        nav label #logo{
+            height: 3rem;
+        }
+
+    div.page{
+        margin: 0em auto;
+        padding: 2em 2em 10em;
+        text-align: center;
+    }
+
+    /* Home */
+    div#home{
+        background:linear-gradient(90deg, #ffffff00, #ffffff00, #ffffff00, #45aacc63), url('img/background_images/main_background.png');
+        background-position: bottom right;
+        background-size: 32em;
+        background-repeat: no-repeat;
+    }
+    div#home h2{
+        font-size: 0px;
+        display: block;
+        margin-top: 0;
+        padding-top: 0;
+    }
+    
+    div#home div#profile{
+        margin-top: 3.5rem;
+        padding-top: 2em;
+        padding-bottom: 4em;
+        width: 100%;
+        display: flex;
+        position: relative;
+        left: -9em;
+        align-items: center;
+        margin-bottom: 150px;
+        box-shadow: var(--main-color) -30em 15em, var(--main-color) -5em -3em, var(--highlight) -4em -3em, var(--text-color) 0 -3em;
+    }
+        div#home h1{
+            padding: 20px;
+            text-align: left;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0px;
+            left: 2em;
+            width: 1000px;
+        }
+        div#home img#profile_pic{
+            margin: 50px;
+            border-radius: 200px;
+            height: 300px;
+        }
+
+        div#home div#dp_bg{
+            margin: 0px;
+            height: 400px;
+            width: 400px;
+            border-radius: 500px;
+            background: linear-gradient(90deg, var(--text-color), var(--main-color), var(--highlight), var(--main-color), var(--text-color));
+            background-size: 800% 100%;
+            animation: gradient 5s ease infinite;
+        }
+
+        div#home span{
+            font-size: 3.5rem;
+            padding: 0;
+            margin: 0;
+            width: 400px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--text-color), var(--main-color), var(--highlight), var(--main-color), var(--text-color));
+            -webkit-background-clip: text;
+	        -webkit-text-fill-color: transparent;
+            background-size: 800% 100%;
+            animation: gradient 5s ease infinite;
+            
+        }
+
+        @keyframes gradient{
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        div img#backdrop{
+            display: none;
+        }
+
+    /* About */
+    div#about{
+        text-align: justify;
+        background-image: linear-gradient(to bottom, #03c0ffda, #a1e7ffbd, #03c0ffa2, #00a2d8b0), url('img/background_images/DP.png');
+        background-position: bottom left;
+        background-size: 200%;
+        background-repeat: no-repeat;
+
+    }
+        div#about h2{
+            font-size: 3em;
+        }
+        div#about h2 span{
+            width: 10em;
+        }
+        div#about div#paragraph1{
+            padding: 30px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.514);
+        }
+        div#about p{
+            font-weight: 600;
+            text-indent: 25px;
+            margin-bottom: 1rem;
+        }
+    
+    /* Technologies */
+    div#technologies{
+        background: linear-gradient(to bottom, #0e879f48, #0e879f48, #0e879f48, #0e879f9f);
+    }
+
+    div#technologies h2{
+        font-size: 3em;
+    }
+
+    div#technologies div#tech{
+        text-align: left;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    div#technologies div{
+        width: 60%;
+    }
+    
+    div#technologies p{
+        font-size: large;
+        font-weight: 600;
+    }
+    
+    div#technologies p span{
+        margin: 2rem auto 1rem;
+        font-size: larger;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+
+    div#technologies p.sentence{
+        font-size: large;
+        font-weight: 400;
+        margin: 2rem auto;
+    }
+
+    div#technologies #container{
+        margin: 2em auto;
+        position: relative;
+        width: 14em;
+        height: 18em;
+    }
+        
+        div#technologies #card{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 1s ease;
+            box-shadow: 0 8px 20px -8px;
+            border-radius: 1em;
+        }
+        div#technologies #front, div#technologies #back{
+            padding: 0;
+            border-radius: 1em;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+        
+        div#technologies #back{
+            transform: rotateY(180deg);
+        }
+    
+    /* Projects */
+    div#projects{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--bg-color));
+    }
+    div#projects h2{
+        font-size: 4em;
+    }
+
+    div#projects h2 span{
+        width: 100%;
+    }
+
+    div#projects p{
+        font-size: 1.2em;
+        margin-bottom: 2em;
+    }
+
+    #project_list{
+        position: relative;
+        background-color: transparent;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #project_list a{
+        font-weight: 600;
+        font-size: 1.6em;
+        text-decoration: none;
+        color: white;
+    }
+    
+    .project{
+        margin: 1em;
+        width: 20em;
+        height: 30em;
+        transform-style: preserve-3d;
+        transition: all 1s ease;
+        box-shadow: 0 8px 20px -8px;
+        border-radius: 1.5em;
+    }
+        .project:hover{
+            transform: rotateY(180deg);
+        }
+    
+        .project_front, .project_back{
+            border-radius: 1.5em;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background-color: blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: justify;
+        }
+    
+        .project_front h3, .project_back a, .project_back p{
+            text-align: center;
+            padding: 1em 2em;
+        }
+
+        .project_back p{
+            text-align: justify;
+        }
+
+        .project_back{
+            user-select: none;
+            font-size: 0.8em;
+            transform: rotateY(180deg);
+            background: linear-gradient(to bottom, rgb(10, 139, 10), rgb(174, 219, 83));
+        }
+
+        .project_back span{
+            font-size: 2em;
+            line-height: 1em;
+        }
+    
+        .project_front #demo1{
+            border: 0.25em solid white;
+            border-radius: 1em;
+            position: relative;
+            width: 80%;
+            height: auto;
+        }
+
+        #project1 .project_front{
+            background: linear-gradient(to bottom, var(--icon-color), var(--highlight), var(--main-color));
+        }
+
+        #project1 .project_front h3{
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 3em;
+            text-shadow: 2px 0px white, 0 2px white, 0 -2px white, -2px 0 white, 2px 2px white, 2px -2px white, -2px 2px white, -2px -2px white;
+        }
+
+    
+    #project_more .project_back{
+        background-image: url("projects/more_projects/coming_soon.png");
+        background-size: 150%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    #project_more .project_front{
+        background: linear-gradient(to top, #b9a976, #eeda97, #eee2bb);
+        color: white;
+        text-shadow: 3px 0px black, 0 3px black, 0 -3px black, -3px 0 black, 3px 3px black, 3px -3px black, -3px 3px black, -3px -3px black;
+    }
+
+    #project_more .project_front h3{
+        font-weight: 600;
+        font-size: 3em;
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1024px){
+    body{
+        text-align: left;
+        min-width: 1280px;
+        height: 100vh;
+        display: flex;
+    }
+
+    main{
+        overflow-y: scroll;
+    }
+
+    /* Navigation bar */
+    nav{
+        height: 100vh;
+        min-width: 0px;
+        position: static;
+        flex-direction: column;
+        align-items: top;
+        justify-content: flex-start;
+        width: 80em;
+        max-width: 340px;
+    }
+    nav a, nav label, nav label h1, nav label img{
+        display: block;
+        padding: 10px;
+        transition: all 1s ease;
+    }
+
+    nav a{
+        text-align: center;
+        width: 100%;
+        font-size: 1.3em;
+        color: var(--bg-color);
+        transition: all 0.5s ease;
+    }
+        nav a:hover{
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.5em;
+            background-color: var(--icon-color);
+            box-shadow: var(--highlight) 0px 2px 10px, var(--highlight) 0px -2px 10px;
+        }
+
+        nav a:active{
+            color: var(--icon-color);
+            text-shadow: white 0 0 20px;
+        }
+        
+        nav label h1{
+            font-size: 2.5em;
+            display: block;
+            text-align: center;
+            margin-bottom: 2em;
+        }
+        
+        nav label #logo{
+            margin: 1rem auto;
+            height: 15rem;
+        }
+    
+    div#about h2, div#technologies h2, div#projects h2, div#contacts h2{
+        font-size: 3.5em;
+    }
+
+    div.page{
+        padding: 5em;
+    }
+
+    /* Home */
+    div#home{
+        height: 100vh;
+        background: transparent;
+    }
+        div#home div#profile{
+            box-shadow: none;
+            left: -13em;
+        }
+
+        div#home h1{
+            padding: 20px;
+            text-align: left;
+            font-size: 3.5em;
+            font-weight: 600;
+            margin: 0px -3em 0px 0px;
+            left: 2em;
+            width: 100%;
+        }
+        div#home img#profile_pic{
+            margin: 50px;
+            border-radius: 50px;
+            height: 500px;
+        }
+
+        div#home div#dp_bg{
+            margin: 0px;
+            height: 600px;
+            width: 600px;
+            border-radius: 100px;
+        }
+
+        div#home span{
+            font-size: 1.5em;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--text-color), var(--main-color), var(--highlight), var(--main-color), var(--text-color));
+            -webkit-background-clip: text;
+	        -webkit-text-fill-color: transparent;
+            background-size: 800% 100%;
+            animation: gradient 5s ease infinite;
+            
+        }
+
+
+    /* About */
+
+    div#about{
+        background-size: 100%;
+    }
+        div#about p{
+            font-size: 1.2rem;
+        }
+        div#about div#paragraph1{
+            padding: 4em;
+        }
+
+    
+    /* Technologies */
+
+    div#technologies h2{
+        text-align: right;
+        font-size: 5em;
+        color: var(--text-color);
+    }
+    
+    div#technologies p{
+        font-size: 1.4em;
+    }
+    
+    div#technologies p span{
+        margin: 2rem auto 1rem;
+        font-size: 1.6em;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+
+    div#technologies p.sentence{
+        font-size: 1.4em;
+        font-weight: 400;
+        margin: 2rem auto;
+    }
+
+    div#technologies #container{
+        margin: 2em auto;
+        position: relative;
+        width: 21em;
+        height: 27em;
+    }
+        
+        div#technologies #card{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 1s ease;
+            box-shadow: 0 8px 20px -8px;
+            border-radius: 1em;
+        }
+        div#technologies #front, div#technologies #back{
+            padding: 0;
+            border-radius: 1em;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+        
+        div#technologies #back{
+            transform: rotateY(180deg);
+        }
+
+}

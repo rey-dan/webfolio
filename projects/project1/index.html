@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<style type="text/css">
+		body{
+			background-color: black;
+			line-height: 0px;
+			margin: 0px;
+			min-width:  556px;
+		}
+
+		.row div{
+			display: inline-block;
+			height: 20px;
+			width: 20px;
+		}
+
+		.brick{
+			background-color: blue;
+		}
+
+		.coin{
+			background: url(img/coin.gif);
+			background-size: 30%;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		.cherry{
+			background: url(img/cherry.png);
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		.empty{
+			background-color: black;
+		}
+
+		#pacman{
+			background: url(img/pacmanright.gif);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+			height: 20px;
+			width: 20px;
+			position: absolute;
+		}
+
+		#score{
+			display: block;
+			border: 1px solid white;
+			height: 38px;
+			width: 80px;
+			color:  white;
+			padding: 7px;
+			line-height: 1.2;
+			text-align: center;
+			position: absolute;
+			top: 10px;
+			left: 450px;
+		}
+
+		#ghost{
+			background: url(img/ghost.ico);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+			height: 20px;
+			width: 20px;
+			position: absolute;
+		}
+
+		#title{
+			display: block;
+			border: 1px solid white;
+			height: 280px;
+			width: 94px;
+			color:  white;
+			padding: auto;
+			padding-top: 15px;
+			font-size: 2rem;
+			line-height: 1.35;
+			text-align: center;
+			position: absolute;
+			top: 80px;
+			left: 450px;
+			color: yellow;
+		}
+
+		#cntr{
+			display: none;
+			height: 340px;
+			width: 400px;
+			color:  white;
+			background-color: black;
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			margin: auto;
+		}
+
+		#cntr p{
+			margin: auto;
+		}
+
+	</style>
+</head>
+<body>
+	<div id='world'></div> <!--displays world-->
+	<div id='pacman'></div>
+	<div id='ghost'></div>
+	<div id='score'></div>
+	<div id='title'></div>
+	<div id='cntr'><p>GAME OVER</p></div>
+
+	<script>
+
+		var world1 = [
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+			[2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,2,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,2],
+			[2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,1,1,2,2,1,2],
+			[2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,1,1,1,2,1,2],
+			[2,1,1,2,1,1,1,1,1,1,2,2,3,1,1,1,1,2,2,2,1,2],
+			[2,1,1,2,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,2,2,2,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,2,2,2,1,1,1,1,2,2,1,1,1,1,1,2,2,2,1,2],
+			[2,1,1,2,3,1,1,1,1,1,2,2,1,1,1,1,1,2,3,2,1,2],
+			[2,1,1,2,2,2,1,1,1,1,2,2,1,1,1,1,1,2,1,2,1,2],
+			[2,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,2,1,2],
+			[2,2,2,2,2,2,1,1,1,1,2,2,3,1,1,1,1,1,1,2,1,2],
+			[2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,1,1,1,2,1,2],
+			[2,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,1,2,1,2,1,2],
+			[2,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,2],
+			[2,1,1,1,2,1,1,1,1,3,1,1,1,1,1,1,1,2,1,1,1,2],
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+		];
+
+		var world2 = [
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+			[2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,2,2,2,2,2,1,1,1,1,1,1,2,2,2,2,2,1,1,2],
+			[2,1,1,1,1,2,1,1,1,1,1,1,1,1,3,1,2,1,1,1,1,2],
+			[2,1,2,1,1,2,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,2],
+			[2,1,2,1,1,2,1,1,1,1,2,2,2,2,1,1,2,1,1,1,1,2],
+			[2,1,2,1,1,2,1,1,2,1,1,1,1,2,1,1,2,1,1,1,1,2],
+			[2,1,2,1,1,2,3,1,2,1,1,1,1,2,1,1,2,1,1,1,1,2],
+			[2,1,2,1,1,2,1,1,2,1,1,1,1,2,1,1,2,1,1,1,1,2],
+			[2,1,2,1,1,2,1,1,2,1,3,1,1,2,1,1,2,1,1,1,1,2],
+			[2,1,1,1,1,2,1,1,2,1,1,1,1,2,1,1,2,1,1,1,1,2],
+			[2,1,1,1,1,2,1,1,2,2,2,2,1,1,1,1,2,1,1,1,1,2],
+			[2,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,2],
+			[2,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,2,1,1,3,1,2],
+			[2,1,1,2,2,2,2,2,1,1,1,1,1,1,2,2,2,2,2,1,1,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+		];
+
+		var world3 = [
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+			[2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,2,2,1,1,1,1,1,2,2,1,1,1,3,1,2,2,1,1,2],
+			[2,1,1,2,2,1,1,1,2,1,2,2,1,2,2,2,2,2,2,1,1,2],
+			[2,1,1,2,2,1,1,1,2,1,2,2,1,1,1,1,1,2,2,1,1,2],
+			[2,1,1,2,2,1,2,1,2,1,2,2,2,2,2,1,1,2,2,1,1,2],
+			[2,1,1,2,2,1,2,1,2,1,2,2,1,1,1,1,1,2,2,1,1,2],
+			[2,1,1,2,2,1,2,2,2,1,1,1,1,1,1,1,1,2,2,1,1,2],
+			[2,1,1,2,2,1,2,1,1,1,3,3,1,1,1,1,1,2,2,1,1,2],
+			[2,1,1,2,2,1,2,1,1,1,1,1,1,1,1,1,1,2,2,1,1,2],
+			[2,1,1,2,2,1,2,2,1,1,2,2,1,2,2,2,1,2,2,1,1,2],
+			[2,1,1,2,2,1,1,1,1,1,2,2,1,2,1,1,1,2,2,1,1,2],
+			[2,1,1,2,2,1,1,1,1,1,2,2,1,2,2,2,1,2,2,3,1,2],
+			[2,1,1,2,2,1,1,1,1,1,2,2,1,1,1,2,1,2,2,1,1,2],
+			[2,1,1,2,2,1,2,2,2,1,2,2,1,1,1,2,1,2,2,1,1,2],
+			[2,1,1,1,1,1,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,3,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+		];
+
+		var world4 = [
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+			[2,0,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,2],
+			[2,1,1,2,2,2,2,2,2,1,1,2,2,1,2,2,1,2,2,3,1,2],
+			[2,2,1,2,2,2,2,2,2,3,1,2,2,1,2,2,1,2,2,1,1,2],
+			[2,1,1,1,1,2,2,1,1,1,1,2,2,1,1,1,1,2,2,1,1,2],
+			[2,1,1,1,1,2,2,1,1,1,1,2,2,1,1,1,1,2,2,1,1,2],
+			[2,1,2,2,1,2,2,1,2,2,1,2,2,1,1,1,1,2,2,1,1,2],
+			[2,1,1,2,1,2,2,1,1,2,1,2,2,1,1,1,1,2,2,1,1,2],
+			[2,1,2,2,1,2,2,1,2,2,1,2,2,1,1,1,1,2,2,1,1,2],
+			[2,1,2,1,1,2,2,1,2,1,1,2,2,1,1,1,1,2,2,1,1,2],
+			[2,1,2,2,1,2,2,1,2,2,1,2,2,1,1,1,1,2,2,1,1,2],
+			[2,1,1,2,1,2,2,1,1,2,1,2,2,1,1,1,1,2,2,1,1,2],
+			[2,1,1,1,1,2,2,3,1,1,1,1,2,2,3,1,2,2,1,1,1,2],
+			[2,1,1,2,2,2,2,2,2,1,1,1,1,2,2,2,2,1,1,1,1,2],
+			[2,1,1,2,2,2,2,2,2,1,1,1,1,1,2,2,3,1,1,1,1,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+		];
+
+		var world5 = [
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+			[2,0,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,1,1,1,1,2,3,2,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,2,2,1,2,1,2,2,2,1,1,2,2,1,1,1,1,2],
+			[2,1,1,1,1,2,2,1,2,1,2,1,1,1,1,2,2,1,1,1,1,2],
+			[2,1,1,1,1,2,2,1,2,1,2,1,1,1,1,2,2,1,1,3,1,2],
+			[2,1,1,1,1,2,2,1,2,1,2,2,2,1,1,2,2,1,1,1,1,2],
+			[2,1,1,1,1,2,2,1,2,1,1,1,2,1,1,2,2,1,1,1,1,2],
+			[2,1,2,1,1,2,2,1,2,1,1,1,2,1,1,2,2,1,1,1,1,2],
+			[2,1,2,2,1,2,2,1,1,2,1,2,1,1,1,2,2,1,1,1,1,2],
+			[2,1,1,2,1,1,2,2,1,1,2,1,1,1,2,2,1,1,1,1,1,2],
+			[2,1,1,2,2,1,1,2,2,1,1,1,1,2,2,1,1,1,1,1,1,2],
+			[2,1,1,1,2,1,1,1,2,2,1,3,2,2,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,2],
+			[2,1,2,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,2],
+			[2,1,2,3,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,3,1,1,1,2],
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+		];
+
+		var pacman = {
+			x:1,
+			y:1
+		};
+
+		var ghost = {
+			x:20,
+			y:17
+		};
+
+		var currentWorld = world1;
+
+		var score = 0;
+
+		var titleName = "P<br>A<br>C<br>M<br>A<br>N";
+
+		var count = 0;
+
+		function generateWorld(){
+			var n = (Math.floor(Math.random()*5)+1);
+			if("world"+n == "world1"){
+				currentWorld = world1;
+			} else if("world"+n == "world2"){
+				currentWorld = world2;
+			} else if("world"+n == "world3"){
+				currentWorld = world3;
+			} else if("world"+n == "world4"){
+				currentWorld = world4;
+			} else if("world"+n == "world5"){
+				currentWorld = world5;
+			}
+		}
+
+		function displayWorld(arr){
+			var output = '';
+			for(var i=0;i<arr.length;i++){
+				output += "<div class='row'>\n";
+				for(var j=0;j<arr[i].length;j++){
+					if(arr[i][j] == 3){
+						output+= "<div class='cherry'></div>";
+					} else if(arr[i][j] == 2){
+						output+= "<div class='brick'></div>";
+					} else if (arr[i][j] == 1){
+						output+= "<div class='coin'></div>";
+					} else if (arr[i][j] == 0){
+						output+= "<div class='empty'></div>";
+					}
+				}
+				output += "\n</div>\n";
+			}
+			// console.log(output);
+			document.getElementById('world').innerHTML = output;
+		}
+
+		function getCount(arr){
+			for(var i=0;i<arr.length;i++){
+				for(var j=0;j<arr[i].length;j++){
+					if (arr[i][j] == 1 || arr[i][j] == 3){
+						count++;
+					}
+				}
+			}
+		}
+
+		function displayPacman(){
+			document.getElementById('pacman').style.left = pacman.x*20 + 'px';
+			document.getElementById('pacman').style.top = pacman.y*20 + 'px';
+		}
+
+		function displayGhost(){
+			document.getElementById('ghost').style.left = ghost.x*20 + 'px';
+			document.getElementById('ghost').style.top = ghost.y*20 + 'px';
+		}
+
+		function displayScore(){
+			document.getElementById('score').innerHTML = "Your Score:<br>" + score;
+		}
+
+		function displayTitle(){
+			document.getElementById('title').innerHTML = titleName;
+		}
+
+		function displayCounter(){
+			document.getElementById('cntr').style.display = 'flex';
+		}
+
+		// Generate the Game
+
+		generateWorld();
+		displayWorld(currentWorld);
+		getCount(currentWorld); //!!!!!
+		displayPacman();
+		displayGhost();
+		displayScore();
+		displayTitle();
+
+		document.onkeydown = function(e){
+
+			// Movement
+
+			if(e.keyCode == 37 && currentWorld[pacman.y][pacman.x-1] != 2 && titleName != "Game<br>Over"){ //RIGHT
+				pacman.x--;
+			} else if(e.keyCode == 38 && currentWorld[pacman.y-1][pacman.x] != 2 && titleName != "Game<br>Over"){ //UP
+				pacman.y--;
+			} else if(e.keyCode == 39 && currentWorld[pacman.y][pacman.x+1] != 2 && titleName != "Game<br>Over"){ //LEFT
+				pacman.x++;	
+			} else if(e.keyCode == 40 && currentWorld[pacman.y+1][pacman.x] != 2 && titleName != "Game<br>Over"){ //DOWN
+				pacman.y++;
+			}
+
+			// Facing
+
+			if(e.keyCode == 37){
+				document.getElementById('pacman').style.backgroundImage = "url('img/pacmanleft.gif')";
+			}
+			else if(e.keyCode == 38){
+				document.getElementById('pacman').style.backgroundImage = "url('img/pacmantop.gif')"; 
+			}
+			else if(e.keyCode == 39){
+				document.getElementById('pacman').style.backgroundImage = "url('img/pacmanright.gif')"; 
+			}
+			else if(e.keyCode == 40){
+				document.getElementById('pacman').style.backgroundImage = "url('img/pacmanbottom.gif')"; 
+			}
+
+			// Eating and Scoring
+
+			if(currentWorld[pacman.y][pacman.x] == 1){ //coins
+				currentWorld[pacman.y][pacman.x] = 0;
+				score+=5;
+				count--;
+				displayWorld(currentWorld);
+				displayScore();
+			} else if(currentWorld[pacman.y][pacman.x] == 3){ //cherry
+				currentWorld[pacman.y][pacman.x] = 0;
+				score+=20;
+				count--;
+				displayWorld(currentWorld);
+				displayScore();
+			}
+
+			// Ghosting
+			if(e.keyCode == 37 || e.keyCode == 38 || e.keyCode == 39 || e.keyCode == 40){
+				if(Math.abs(ghost.x - pacman.x) > Math.abs(ghost.y - pacman.y)){
+					// width > height
+					if((ghost.x - pacman.x) > 0){
+						if(currentWorld[ghost.y][ghost.x-1] != 2){
+							ghost.x--;
+						} else{
+							if((ghost.y - pacman.y) > 0 && currentWorld[ghost.y-1][ghost.x] != 2){
+								ghost.y--;
+							} else if((ghost.y - pacman.y) < 0 && currentWorld[ghost.y+1][ghost.x] != 2){
+								ghost.y++;
+							}
+						}
+					} else if((ghost.x - pacman.x) < 0 ){
+						if(currentWorld[ghost.y][ghost.x+1] != 2){
+							ghost.x++;
+						} else{
+							if((ghost.y - pacman.y) > 0 && currentWorld[ghost.y-1][ghost.x] != 2){
+								ghost.y--;
+							} else if((ghost.y - pacman.y) < 0 && currentWorld[ghost.y+1][ghost.x] != 2){
+								ghost.y++;
+							}
+						}
+					}
+				} else if (Math.abs(ghost.x - pacman.x) < Math.abs(ghost.y - pacman.y)){
+					// height > width
+					if((ghost.y - pacman.y) > 0){
+						if (currentWorld[ghost.y-1][ghost.x] != 2){
+							ghost.y--;
+						} else{
+							if((ghost.x - pacman.x) > 0 && currentWorld[ghost.y][ghost.x-1] != 2){
+								ghost.x--;
+							} else if((ghost.x - pacman.x) < 1 && currentWorld[ghost.y][ghost.x+1] != 2){
+								ghost.x++;
+							}
+						}
+					} else if((ghost.y - pacman.y) < 0 ){
+						if(currentWorld[ghost.y+1][ghost.x] != 2){
+							ghost.y++;
+						} else {
+							if((ghost.x - pacman.x) > 0 && currentWorld[ghost.y][ghost.x-1] != 2){
+								ghost.x--;
+							} else if((ghost.x - pacman.x) < 0 && currentWorld[ghost.y][ghost.x+1] != 2){
+								ghost.x++;
+							}
+						}
+					}
+				} else{
+					if((ghost.y - pacman.y) > 0){
+						if (currentWorld[ghost.y-1][ghost.x] != 2){
+							ghost.y--;
+						} else{
+							if((ghost.x - pacman.x) > 0 && currentWorld[ghost.y][ghost.x-1] != 2){
+								ghost.x--;
+							} else if((ghost.x - pacman.x) < 1 && currentWorld[ghost.y][ghost.x+1] != 2){
+								ghost.x++;
+							}
+						}
+					} else if((ghost.y - pacman.y) < 0 ){
+						if(currentWorld[ghost.y+1][ghost.x] != 2){
+							ghost.y++;
+						} else {
+							if((ghost.x - pacman.x) > 0 && currentWorld[ghost.y][ghost.x-1] != 2){
+								ghost.x--;
+							} else if((ghost.x - pacman.x) < 0 && currentWorld[ghost.y][ghost.x+1] != 2){
+								ghost.x++;
+							}
+						}
+					}
+				}
+				console.log("gx="+ghost.x+"gy"+ghost.y);
+				console.log("px="+pacman.x+"py"+pacman.y);
+			}
+
+
+			// Game Over
+			if(count < 1){
+				titleName = "Game<br>Over";
+				displayCounter();	
+			}
+			if(ghost.x == pacman.x && ghost.y == pacman.y){
+				titleName = "Game<br>Over";
+				displayCounter();
+			}
+
+			// Update Screen
+			displayPacman();
+			displayGhost();
+
+		}
+	</script>
+</body>
+</html>
