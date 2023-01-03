@@ -55,6 +55,14 @@ main div.page h2{
         box-shadow: var(--text-color) 10px 3px;
     }
 
+#back_to_top{
+    display: block;
+    text-decoration: none;
+    margin-top: 20em;
+    color: #1cdfff;
+    margin-bottom: -7em;
+}
+
 /* Mobile */
 @media only screen and (max-width: 480px){
     body{
@@ -190,13 +198,12 @@ main div.page h2{
         background-position: bottom left;
         background-size: 200%;
         background-repeat: no-repeat;
-
     }
         div#about h2 span{
             width: 100%;
         }
         div#about p{
-            font-weight: 600;
+            font-weight: 400;
             text-indent: 25px;
             margin-bottom: 1rem;
         }
@@ -212,6 +219,10 @@ main div.page h2{
         align-items: center;
         background: linear-gradient(to bottom, #0e879f48, #0e879f48, #0e879f48, #0e879f9f);
     }
+        div#technologies h2{
+            width: 100%;
+            text-align: right;
+        }
     div#technologies p{
         font-size: large;
         font-weight: 600;
@@ -268,16 +279,13 @@ main div.page h2{
         align-items: center;
         background-color: var(--bg-color));
     }
-    div#projects h2{
-        font-size: 4em;
-    }
 
     div#projects h2 span{
         width: 100%;
     }
 
     div#projects p{
-        font-size: 1.2em;
+        font-size: 1em;
         margin-bottom: 2em;
     }
 
@@ -300,8 +308,8 @@ main div.page h2{
     
     .project{
         margin: 1em;
-        width: 20em;
-        height: 30em;
+        width: 14em;
+        height: 21em;
         transform-style: preserve-3d;
         transition: all 1s ease;
         box-shadow: 0 8px 20px -8px;
@@ -359,9 +367,10 @@ main div.page h2{
         }
 
         #project1 .project_front h3{
+            user-select: none;
             color: var(--text-color);
             font-weight: 600;
-            font-size: 3em;
+            font-size: 2em;
             text-shadow: 2px 0px white, 0 2px white, 0 -2px white, -2px 0 white, 2px 2px white, 2px -2px white, -2px 2px white, -2px -2px white;
         }
 
@@ -376,13 +385,85 @@ main div.page h2{
     #project_more .project_front{
         background: linear-gradient(to top, #b9a976, #eeda97, #eee2bb);
         color: white;
-        text-shadow: 3px 0px black, 0 3px black, 0 -3px black, -3px 0 black, 3px 3px black, 3px -3px black, -3px 3px black, -3px -3px black;
+        text-shadow: 2px 0px black, 0 2px black, 0 -2px black, -2px 0 black, 2px 2px black, 2px -2px black, -2px 2px black, -2px -2px black;
     }
 
     #project_more .project_front h3{
         font-weight: 600;
-        font-size: 3em;
+        font-size: 2em;
     }
+
+    /* Contacts */
+    div#contacts{
+        background: linear-gradient(to bottom, #baf6ff, #c1f7ff, #5be9ff, var(--icon-color), var(--icon-color), var(--icon-color), var(--highlight), var(--highlight), var(--highlight), var(--main-color), var(--text-color));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+        div#contacts h2{
+            width: 100%;
+        }
+        div#contacts div#map{
+            width: 20em;
+            height: 20em;
+            margin-bottom: 4em;
+            background: #dffbff;
+            padding: 1em;
+            border-radius: 2em;
+            box-shadow: #004861 0px 20px 15px 0px;
+        }
+
+        iframe{
+            margin: 1em auto;
+            border-radius: 10%;
+            width: 90%;
+            height: 15em;
+        }
+
+    code{
+        color: white;
+        font-size: 3em;
+        font-weight: 600;
+        background: #000;
+        margin: 2em auto 1em;
+    }
+    div#contacts h3{
+        font-size: 1.2em;
+    }
+    div#contacts span.contact{
+        padding: 0.2em 1em;
+        width: 100%;
+        background-color: #004961b4;
+        font-weight: 400;
+        color: white;
+        border-radius: 1em;
+    }
+    #code1{
+        color: black;
+        background-color: white;
+        margin: 8em auto;
+        font-size: 1.1em;
+    }
+    
+    #feedback{
+        font-size: 1em;
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        padding: 0.1em 1em;
+        border-radius: 1em;
+        background: linear-gradient(45deg, var(--text-color), #21a3bd, var(--text-color), #21a3bd);
+        background-size: 800% 200%;
+        animation: gradient 5s ease infinite;
+    }
+    
+        #feedback:hover{
+            font-size: 1.1em;
+            color: black;
+            background: white;
+        }
 }
 
 /* Tablet */
@@ -447,7 +528,7 @@ main div.page h2{
 
     div.page{
         margin: 0em auto;
-        padding: 2em 2em 10em;
+        padding: 2em 3em 10em;
         text-align: center;
     }
 
@@ -475,7 +556,7 @@ main div.page h2{
         left: -9em;
         align-items: center;
         margin-bottom: 150px;
-        box-shadow: var(--main-color) -30em 15em, var(--main-color) -5em -3em, var(--highlight) -4em -3em, var(--text-color) 0 -3em;
+        box-shadow: var(--main-color) -30em 15em, var(--main-color) -5em -3em, var(--highlight) -4em -3em, var(--text-color) -0.5em -3em;
     }
         div#home h1{
             padding: 20px;
@@ -548,12 +629,12 @@ main div.page h2{
             width: 10em;
         }
         div#about div#paragraph1{
-            padding: 30px;
+            padding: 3em;
             border-radius: 20px;
             background-color: rgba(255, 255, 255, 0.514);
         }
         div#about p{
-            font-weight: 600;
+            font-weight: 400;
             text-indent: 25px;
             margin-bottom: 1rem;
         }
@@ -636,7 +717,8 @@ main div.page h2{
         background-color: var(--bg-color));
     }
     div#projects h2{
-        font-size: 4em;
+        display: block;
+        font-size: 3em;
     }
 
     div#projects h2 span{
@@ -665,8 +747,8 @@ main div.page h2{
     
     .project{
         margin: 1em;
-        width: 20em;
-        height: 30em;
+        width: 18em;
+        height: 27em;
         transform-style: preserve-3d;
         transition: all 1s ease;
         box-shadow: 0 8px 20px -8px;
@@ -712,6 +794,7 @@ main div.page h2{
         }
     
         .project_front #demo1{
+            margin-top: 1.5em;
             border: 0.25em solid white;
             border-radius: 1em;
             position: relative;
@@ -724,6 +807,7 @@ main div.page h2{
         }
 
         #project1 .project_front h3{
+            user-select: none;
             color: var(--text-color);
             font-weight: 600;
             font-size: 3em;
@@ -748,6 +832,82 @@ main div.page h2{
         font-weight: 600;
         font-size: 3em;
     }
+
+    /* Contacts */
+    div#contacts{
+        background: linear-gradient(to bottom, #baf6ff, #c1f7ff, #5be9ff, var(--icon-color), var(--icon-color), var(--icon-color), var(--highlight), var(--highlight), var(--highlight), var(--main-color), var(--text-color));
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+        div#contact_info code, div#contact_info h3{
+            display: block;
+        }
+
+        div#contacts h2{
+            width: 100%;
+        }
+        div#contacts div#map{
+            width: 80%;
+            height: 40vh;
+            margin-bottom: 4em;
+            background: #dffbff;
+            padding: 1em;
+            border-radius: 2em;
+            box-shadow: #004861 0px 20px 15px 0px;
+        }
+
+        iframe{
+            margin: 1em auto;
+            border-radius: 1em;
+            width: 90%;
+            height: 30vh;
+        }
+
+    code{
+        color: white;
+        font-size: 3em;
+        font-weight: 600;
+        background: #000;
+        margin: 1em auto 2em;
+    }
+    div#contacts h3{
+        font-size: 1.2em;
+    }
+    div#contacts span.contact{
+        padding: 0.2em 1em;
+        width: 100%;
+        background-color: #004961b4;
+        font-weight: 400;
+        color: white;
+        border-radius: 1em;
+    }
+    #code1{
+        padding: 0 2em;
+        color: black;
+        background-color: white;
+        margin: 4em auto;
+        font-size: 1.5em;
+    }
+    
+    #feedback{
+        font-size: 1.2em;
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        padding: 0.1em 1em;
+        border-radius: 1em;
+        background: linear-gradient(45deg, var(--text-color), #21a3bd, var(--text-color), #21a3bd);
+        background-size: 800% 200%;
+        animation: gradient 5s ease infinite;
+    }
+    
+        #feedback:hover{
+            font-size: 1.3em;
+            color: black;
+            background: white;
+        }
 }
 
 /* Desktop */
@@ -935,5 +1095,178 @@ main div.page h2{
         div#technologies #back{
             transform: rotateY(180deg);
         }
+    
+    /* Projects */
+    .project{
+        width: 20em;
+        height: 30em;
+    }
 
+    .project_front #demo1{
+        margin: 1em;
+    }
+
+    /* Contacts */
+    div#contacts{
+        background: linear-gradient(to bottom, #baf6ff, #c1f7ff, #5be9ff, var(--icon-color), var(--icon-color), var(--icon-color), var(--highlight), var(--highlight), var(--highlight), var(--main-color), var(--text-color));
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+
+        div#contacts h2{
+            width: 100%;
+        }
+        div#contacts div#map{
+            width: 80%;
+            height: 40vh;
+            margin-bottom: 4em;
+            background: #dffbff;
+            padding: 1em;
+            border-radius: 2em;
+            box-shadow: #004861 0px 20px 15px 0px;
+        }
+
+        iframe{
+            margin: 1em auto;
+            border-radius: 1em;
+            width: 90%;
+            height: 30vh;
+        }
+
+    code{
+        color: white;
+        font-size: 3em;
+        font-weight: 600;
+        background: #000;
+        margin: 1em auto 2em;
+    }
+    div#contacts h3{
+        font-size: 1.2em;
+    }
+    div#contacts span.contact{
+        padding: 0.2em 1em;
+        width: 100%;
+        background-color: #004961b4;
+        font-weight: 400;
+        color: white;
+        border-radius: 1em;
+    }
+    #code1{
+        padding: 0 2em;
+        color: black;
+        background-color: white;
+        margin: 4em auto;
+        font-size: 1.5em;
+    }
+    
+    #feedback{
+        font-size: 1.2em;
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        padding: 0.1em 1em;
+        border-radius: 1em;
+        background: linear-gradient(45deg, var(--text-color), #21a3bd, var(--text-color), #21a3bd);
+        background-size: 800% 200%;
+        animation: gradient 5s ease infinite;
+    }
+    
+        #feedback:hover{
+            font-size: 1.3em;
+            color: black;
+            background: white;
+        }
+    
+    /* Contacts */
+    div#contacts{
+        background: linear-gradient(to bottom, #baf6ff, #c1f7ff, #5be9ff, var(--icon-color), var(--icon-color), var(--icon-color), var(--highlight), var(--highlight), var(--highlight), var(--main-color), var(--text-color));
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+        div#all_contacts{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        div#contact_info{
+            padding: 1em 1em 1em 3em;
+        }
+
+        div#contacts h2{
+            width: 100%;
+        }
+        div#contacts div#map{
+            width: 100%;
+            height: 50vh;
+            margin-bottom: 4em;
+            background: #dffbff;
+            padding: 1em;
+            border-radius: 2em;
+            box-shadow: #004861 0px 20px 15px 0px;
+        }
+
+        iframe{
+            margin: 1em auto;
+            border-radius: 1em;
+            width: 90%;
+            height: 40vh;
+        }
+
+    code{
+        color: white;
+        font-size: 3em;
+        font-weight: 600;
+        background: #000;
+        margin: -1.5em auto 2em;
+    }
+    div#contacts h3{
+        font-size: 1.2em;
+    }
+    div#contacts span.contact{
+        padding: 0.2em 1em;
+        width: 100%;
+        background-color: #004961b4;
+        font-weight: 400;
+        color: white;
+        border-radius: 1em;
+    }
+    #code1{
+        padding: 0 2em;
+        color: black;
+        background-color: white;
+        margin: 4em auto;
+        font-size: 1.5em;
+    }
+    
+    #feedback{
+        font-size: 1.2em;
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        padding: 0.1em 1em;
+        border-radius: 1em;
+        background: linear-gradient(45deg, var(--text-color), #21a3bd, var(--text-color), #21a3bd);
+        background-size: 800% 200%;
+        animation: gradient 5s ease infinite;
+    }
+    
+        #feedback:hover{
+            font-size: 1.3em;
+            color: black;
+            background: white;
+        }
+    
+    #back_to_top{
+        display: block;
+        text-decoration: none;
+        margin-top: 20em;
+        color: #1cdfff;
+        margin-bottom: -3em;
+    }
 }

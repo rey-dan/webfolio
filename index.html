@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Scripts -->
     <script src="script.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 <body>
     <nav id="navbar">
@@ -42,8 +43,8 @@
             <h2>About Me<span></span></h2>
             <div id="paragraph1">
                 <p>Hi! I'm Daniel. I am a career shifter and has been exploring the world of web developers.</p>
-                <p>I am a well rounded individual, eager to learn and explore new things. My enthusiasm to coding and my friends recommendation led me to discover web devlopment.</p>
-                <p>So I started learning web development by searhing youtube video tutorials and browsing through w3school. Since I could not get enough, I decided to search for any free webinars I could participate into for additional knowledge. Then, I entered freecodecamp to boost up my learnings in web fundamentals such as html, css and responsive web design.</p>
+                <p>I am a well rounded individual, eager to learn and explore new things. My enthusiasm for coding and my friends recommendation led me to discover web devlopment.</p>
+                <p>So I started learning web development by searching youtube video tutorials and browsing through w3school. Since I could not get enough, I decided to search for any free webinars I could participate into for additional knowledge. Then, I entered freecodecamp to boost up my learnings in web fundamentals such as html, css and responsive web design.</p>
                 <p>Fortunately, I was able to join an online Web Development Training bootcamp, where I was able to dive in through full stack web development. From there I was exposed to different technologies related to web development such as Git, GitHub, PHP, JavaScript, and many more, including quality assurance such as creating test cases, manual testing, automation through selenuium and postman, and etc.</p>
                 <p>Aside from this, I want to learn more with its application in the real world. I want to start that journey by being a part of your company. The more I can learn and gain more experience from your company, the more I could give back and contribute for the improvement and betterment of the company.</p>
             </div>
@@ -90,20 +91,23 @@
         </div>
         <div class="page" id="contacts">
             <h2>Contacts<span></span></h2>
-            <div>
-                <h3>I am located here</h3>
-                <div>Google Maps Location</div>
+            <div id="all_contacts">
+                <div id="map">
+                    <p>I am located here!</p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31740.57730306837!2d125.07824130257528!3d6.053277345831467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f7a3b06fd26fcd%3A0x3e88fb6c6ca2a8da!2sFatima%2C%20General%20Santos%20City%2C%20South%20Cotabato!5e0!3m2!1sen!2sph!4v1672657218388!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div id="contact_info">
+                    <code>How do you like your cofee?</code>
+                    <p>You can reach me out through the following contact information.</p>
+                    <h3>email me at: <span class="contact">reyesd.june30@gmail.com</span></h3>
+                    <p>or</p>
+                    <h3>call/text me through: <span class="contact">(+63) 956 552 1678</span></h3>
+                </div>
+                <div id="last"></div>
             </div>
-            <p>How do you like your cofee?</p>
-            <h3>You can reach me out through the following contact information.</h3>
-            <p>email me at: <a href="">reyesd.june30@gmail.com</a></p>
-            <p>or</p>
-            <p>call/text me through: <a href="">(+63) 956 552 1678</a></p>
-            <h3>I am willing to be relocated if necessary.</h3>
-            <form action="" method="POST">
-                <h3>Send a feedback:</h3>
-            </form>
-            <a href="#home">Back to top</a>
+            <code id="code1">I am willing to be relocated if necessary.</code>
+            <a id="feedback" href="mailto:reyesd.june30@gmail.com">&gt&gt&gt Click me to send a feedback! &lt&lt&lt</a>
+            <a id="back_to_top" href="#home">Back to top</a>
         </div>
     </main>
 </body>
