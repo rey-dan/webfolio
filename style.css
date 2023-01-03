@@ -380,6 +380,7 @@ main div.page h2{
         background-size: 150%;
         background-repeat: no-repeat;
         background-position: center;
+        user-select: pointer;
     }
 
     #project_more .project_front{
@@ -820,6 +821,7 @@ main div.page h2{
         background-size: 150%;
         background-repeat: no-repeat;
         background-position: center;
+        user-select: pointer;
     }
 
     #project_more .project_front{
