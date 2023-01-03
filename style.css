@@ -437,6 +437,8 @@ main div.page h2{
         background: #000;
         margin: 2em auto 1em;
         width: 100%;
+        margin: 1em auto 2em;
+        padding: 1em;
     }
     div#contacts h3{
         font-size: 1.2em;
@@ -467,12 +469,6 @@ main div.page h2{
         background-size: 800% 200%;
         animation: gradient 5s ease infinite;
     }
-    
-        #feedback:hover{
-            font-size: 1.1em;
-            color: black;
-            background: white;
-        }
 }
 
 /* Tablet */
@@ -851,6 +847,13 @@ main div.page h2{
         justify-content: space-evenly;
         flex-direction: column;
     }
+
+        div#all_contacts{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
         div#contact_info code, div#contact_info h3{
             display: block;
         }
@@ -881,6 +884,7 @@ main div.page h2{
         font-weight: 600;
         background: #000;
         margin: 1em auto 2em;
+        padding: 1em;
     }
     div#contacts h3{
         font-size: 1.2em;
