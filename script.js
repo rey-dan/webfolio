@@ -45,6 +45,34 @@ window.addEventListener('load', function(){
         }
     }
 
+    var scroll_default = function(){
+        var height = this.innerHeight;
+        var scrolled = this.scrollY;
+        for(let i = 0; i < pages.length; i++){
+            if(pages[i].offsetTop < scrolled + height/2 && scrolled < pages[i].offsetTop + height/2){
+                if(pages[i].firstElementChild.innerHTML == ""){
+                    document.getElementById("title_bar").innerHTML = "DAN";
+                } else{
+                    document.getElementById("title_bar").innerHTML = pages[i].firstElementChild.innerHTML;
+                }   
+            }
+        }
+    }
+
+    var scroll_desktop = function(){
+        var height = pages[0].scrollHeight;
+        var scrolled = content.scrollTop;
+        for(let i = 0; i < pages.length; i++){
+            if(pages[i].offsetTop < scrolled + height/2 && scrolled < pages[i].offsetTop + height/2){
+                if(pages[i].firstElementChild.innerHTML == ""){
+                    document.getElementById("title_bar").innerHTML = "DAN";
+                } else{
+                    document.getElementById("title_bar").innerHTML = pages[i].firstElementChild.innerHTML;
+                }
+            }
+        }
+    }
+
     // Navigation bar function
     menubar.addEventListener('click', show_nav_bar);
     closebar.addEventListener('click', close_nav_bar);
@@ -53,72 +81,40 @@ window.addEventListener('load', function(){
         for(let i = 0; i < items.length; i++){
             items[i].addEventListener('click', set_title_mobile);
         }
+    } else{
+        for(let i = 0; i < items.length; i++){
+            items[i].addEventListener('click', set_title);
+        }
     }
 
     // Resizing adjustments for navigation bar
     this.addEventListener('resize', function(){
-        if(this.innerWidth > 480){
+        close_nav_bar();
+        if(this.innerWidth <= 480){
             for(let i = 0; i < items.length; i++){
-                items[i].addEventListener('click', set_title);
+                items[i].addEventListener('click', set_title_mobile);
             }
+        } else{
             menubar.style.display = "none";
             closebar.style.display = "none";
             for(let i = 0; i < items.length; i++){
+                items[i].addEventListener('click', set_title);
                 items[i].style.display = "block";
-            }
-        }
-        
-        if(this.innerWidth <= 480){
-            close_nav_bar();
-            for(let i = 0; i < items.length; i++){
-                items[i].addEventListener('click', set_title_mobile);
             }
         }
 
         if(this.innerWidth >= 1024){
-            content.addEventListener("scroll", function(){
-                for(let i = 0; i < pages.length; i++){
-                    if(pages[i].offsetTop < scrolled + height/2 && scrolled < pages[i].offsetTop + height/2){
-                        set_title();    
-                    }
-                }
-            });
+            content.addEventListener("scroll", scroll_desktop);
         } else{
-            this.addEventListener("scroll", function(){
-                for(let i = 0; i < pages.length; i++){
-                    if(pages[i].offsetTop < scrolled + height/2 && scrolled < pages[i].offsetTop + height/2){
-                        set_title();
-                    }
-                }
-            });
+            this.addEventListener("scroll", scroll_default);
         }
     });
 
     
     if(this.innerWidth >= 1024){
-        content.addEventListener("scroll", function(){
-            var height = pages[0].scrollHeight;
-            var scrolled = content.scrollTop;
-            for(let i = 0; i < pages.length; i++){
-                if(pages[i].offsetTop < scrolled + height/2 && scrolled < pages[i].offsetTop + height/2){
-                    set_title();
-                }
-            }
-        });
+        content.addEventListener("scroll", scroll_desktop);
     } else{
-        this.addEventListener("scroll", function(){
-            var height = this.innerHeight;
-            var scrolled = this.scrollY;
-            for(let i = 0; i < pages.length; i++){
-                if(pages[i].offsetTop < scrolled + height/2 && scrolled < pages[i].offsetTop + height/2){
-                    if(pages[i].firstElementChild.innerHTML == ""){
-                        document.getElementById("title_bar").innerHTML = "DAN";
-                    } else{
-                        document.getElementById("title_bar").innerHTML = pages[i].firstElementChild.innerHTML;
-                    }   
-                }
-            }
-        });
+        this.addEventListener("scroll", scroll_default);
     }
 
     // Technology card
