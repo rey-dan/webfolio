@@ -403,6 +403,12 @@ main div.page h2{
         flex-direction: column;
     }
 
+    div#all_contacts{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
         div#contacts h2{
             width: 100%;
         }
@@ -422,13 +428,15 @@ main div.page h2{
             width: 90%;
             height: 15em;
         }
-
+    
     code{
+        display: flex;
         color: white;
         font-size: 3em;
         font-weight: 600;
         background: #000;
         margin: 2em auto 1em;
+        width: 100%;
     }
     div#contacts h3{
         font-size: 1.2em;
