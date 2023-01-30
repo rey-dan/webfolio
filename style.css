@@ -22,6 +22,7 @@ body{
     font-family: 'Poppins', sans-serif;
     margin: auto;
     transition: all 0.5s ease;
+    scroll-behavior: smooth;
 }
 
 span{ 
@@ -940,6 +941,7 @@ main div.page h2{
     main{
 	margin-left: 340px;
         overflow-x: hidden;
+	scroll-behavior: smooth;
     }
 
     /* Navigation bar */
