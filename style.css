@@ -934,19 +934,19 @@ main div.page h2{
     }
 
     main{
-        overflow-y: scroll;
+	margin-left: 340px;
+        overflow-x: hidden;
     }
 
     /* Navigation bar */
     nav{
         height: 100vh;
         min-width: 0px;
-        position: static;
         flex-direction: column;
-        align-items: top;
         justify-content: flex-start;
         width: 80em;
         max-width: 340px;
+	position: fixed;
     }
     nav a, nav label, nav label h1, nav label img{
         display: block;
