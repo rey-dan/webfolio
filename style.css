@@ -937,6 +937,7 @@ main div.page h2{
         min-width: 1280px;
         height: 100vh;
         display: flex;
+	object-fit: contain; // added object-fit property
     }
 
     main{
@@ -1003,6 +1004,7 @@ main div.page h2{
 
     /* Home */
     div#home{
+	object-fit: contain; // added object-fit property
         height: 100vh;
         background: transparent;
     }
